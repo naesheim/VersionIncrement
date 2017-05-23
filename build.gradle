@@ -1,0 +1,59 @@
+
+['groovy','maven-publish', 'com.gradle.plugin-publish'].each {
+    apply plugin: it
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+group = 'net.praqma'
+version = '1.0.0'
+
+buildscript{
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+   classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+ }
+}
+
+
+
+pluginBundle {
+  website = 'https://github.com/praqma/VersionedBinaryArtifacts'
+  vcsUrl = 'https://github.com/praqma/VersionedBinaryArtifacts'
+  description = 'Use build.properties file and Binary Manager to autoincrement version'
+  tags = ['version', 'autoincrement']
+
+  plugins {
+    binaryArtifactPlugin {
+      id = 'net.praqma.vi'
+      displayName = 'VersionIncrementer'
+    }
+  }
+}
+
+
+publishing {
+    repositories {
+        maven {
+            url "${repositoryManagerUrl}/plugins-release-local"
+          credentials {
+              username repositoryManagerUsername
+              password repositoryManagerPassword
+          }
+      }
+    }
+
+    publications {
+
+        jar(MavenPublication) {
+            from components.java
+        }
+    }
+}
