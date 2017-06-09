@@ -74,7 +74,7 @@ class VersionIncrementPlugin implements Plugin<Project> {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(html.getInputStream()))
                     def versionList = []
                     def search = list[0]+'.'+list[1]
-                    def regx = /$search\.\d{1}/
+                    def regx = /$search\.\d+/
                     reader.eachLine {
                             def finder = (it.toString() =~ /$regx/)
                             if (finder.size() != 0) {
@@ -83,10 +83,13 @@ class VersionIncrementPlugin implements Plugin<Project> {
                     }
                     def high
                     if (versionList.size() != 0) {
-                        high = versionList.max()
-                        println("highest version in manager "+high)
-                        def num = high.tokenize('.')
-                        high = search + '.' + (num[2].toInteger() + 1)
+                        def max = 0
+                        versionList.each {
+                            def cur = it.tokenize('.')[2].toInteger()
+                            max = (cur > max) ? cur : max
+                        }
+                        println("highest version in manager "+max)
+                        high = search + '.' + (max.toInteger() + 1)
                     }
                     else{
                         println("no match for current major.minor "+search)
