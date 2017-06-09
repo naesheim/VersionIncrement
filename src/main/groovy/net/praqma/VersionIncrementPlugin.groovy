@@ -85,7 +85,8 @@ class VersionIncrementPlugin implements Plugin<Project> {
                     if (versionList.size() != 0) {
                         high = versionList.max()
                         println("highest version in manager "+high)
-                        high++
+                        def num = high.tokenize('.')
+                        high = search + '.' + (num[2].toInteger() + 1)
                     }
                     else{
                         println("no match for current major.minor "+search)

@@ -9,7 +9,7 @@ dependencies {
 }
 
 group = 'net.praqma'
-version = '1.0.0'
+version = '1.0.1'
 
 buildscript{
   repositories {
@@ -25,8 +25,8 @@ buildscript{
 
 
 pluginBundle {
-  website = 'https://github.com/praqma/VersionedBinaryArtifacts'
-  vcsUrl = 'https://github.com/praqma/VersionedBinaryArtifacts'
+  website = 'https://github.com/naesheim/versionincrement'
+  vcsUrl = 'https://github.com/naesheim/versionincrement'
   description = 'Use build.properties file and Binary Manager to autoincrement version'
   tags = ['version', 'autoincrement']
 

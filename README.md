@@ -1,7 +1,12 @@
 ## VersionIncrement
 
+Use:
 
-Automagically version increment
+{
+    id "net.praqma.vi" version "1.0.0"
+}
+
+Automagically version increment:
 
 Available methods
 
@@ -17,7 +22,7 @@ Available methods
   - increment z.  -> x.y.z+1
 
 ./gradlew incrementVersion
-  - query Artifactory/Nexus for highest version x.y then bumps z  -> x.y.+1 
+  - query Artifactory/Nexus for highest version x.y then bumps z  -> x.y.x+1
 
 
 Looks for artifact name and current version in build.properties in root folder
