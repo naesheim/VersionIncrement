@@ -1,12 +1,18 @@
 ## VersionIncrement
 
-Use:
+###Use:
 
+in build.gradle add plugin:
 {
-    id "net.praqma.vi" version "1.0.0"
+    id "net.praqma.vi" version "1.0.2"
 }
 
-Automagically version increment:
+Requirements:
+ - Looks for artifact name and current version in build.properties in root folder
+
+ - Looks for binary manager url, username and password in gradle.properties in ~/ folder
+
+###Automagically version increment:
 
 Available methods
 
@@ -25,6 +31,4 @@ Available methods
   - query Artifactory/Nexus for highest version x.y then bumps z  -> x.y.x+1
 
 
-Looks for artifact name and current version in build.properties in root folder
 
-Looks for binary manager url, username and password in gradle.properties in ~/ folder
